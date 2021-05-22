@@ -46,10 +46,36 @@ namespace CrudEntityFramework.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpGet]
+        public IActionResult Edit(int? id)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (id==null)
+            {
+                return NotFound();
+            }
+
+            var usuario = _context.Usuario.Find(id);
+
+            if(usuario == null){
+                return NotFound();   
+            }
+
+            return View(usuario);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Usuario usuario)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Usuario.Update(usuario);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(usuario);
+        }
+
     }
 }
