@@ -152,3 +152,4 @@ E:\Desarrollos Personales\CrudEntityFramework\CrudEntityFramework\bin\Debug\netc
 E:\Desarrollos Personales\CrudEntityFramework\CrudEntityFramework\obj\Debug\netcoreapp3.1\Razor\Views\Home\Create.cshtml.g.cs
 E:\Desarrollos Personales\CrudEntityFramework\CrudEntityFramework\obj\Debug\netcoreapp3.1\Razor\Views\Home\Edit.cshtml.g.cs
 E:\Desarrollos Personales\CrudEntityFramework\CrudEntityFramework\obj\Debug\netcoreapp3.1\Razor\Views\Home\Details.cshtml.g.cs
+E:\Desarrollos Personales\CrudEntityFramework\CrudEntityFramework\obj\Debug\netcoreapp3.1\Razor\Views\Home\Delete.cshtml.g.cs

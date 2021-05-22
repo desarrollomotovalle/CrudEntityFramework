@@ -49,15 +49,16 @@ namespace CrudEntityFramework.Controllers
         [HttpGet]
         public IActionResult Edit(int? id)
         {
-            if (id==null)
+            if (id == null)
             {
                 return NotFound();
             }
 
             var usuario = _context.Usuario.Find(id);
 
-            if(usuario == null){
-                return NotFound();   
+            if (usuario == null)
+            {
+                return NotFound();
             }
 
             return View(usuario);
@@ -93,6 +94,40 @@ namespace CrudEntityFramework.Controllers
             }
 
             return View(usuario);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var usuario = _context.Usuario.Find(id);
+
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            return View(usuario);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteRegistro(int? id)
+        {
+            var usuario = await _context.Usuario.FindAsync(id);
+
+            if (usuario == null)
+            {
+                return View();
+            }
+
+            _context.Usuario.Remove(usuario);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index)); 
         }
 
     }
